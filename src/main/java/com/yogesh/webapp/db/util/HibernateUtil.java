@@ -13,7 +13,11 @@ import org.hibernate.service.ServiceRegistry;
 import com.yogesh.webapp.model.Flight;
 import com.yogesh.webapp.model.User;
 
-
+/**
+ * Utility to initialize Hibernate session factory
+ * @author mahesh
+ *
+ */
 public class HibernateUtil {
 	
 	private static SessionFactory sessionFactory;
