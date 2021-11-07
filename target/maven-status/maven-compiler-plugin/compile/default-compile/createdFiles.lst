@@ -1,0 +1,5 @@
+com\yogesh\webapp\db\util\HibernateUtil.class
+com\yogesh\webapp\model\User.class
+com\yogesh\webapp\dao\UserDao.class
+com\yogesh\webapp\dao\UserDaoImpl.class
+com\yogesh\webapp\model\Flight.class

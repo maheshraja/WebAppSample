@@ -2,9 +2,12 @@ package com.yogesh.webapp.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import com.yogesh.webapp.model.User;
+import com.yogesh.webapp.dao.UserDaoImpl;
 
 public class TestUserDaoImpl {
 
@@ -30,6 +33,21 @@ public class TestUserDaoImpl {
 		try {
 			User queriedUser = dao.selectUser(1);
 			assertEquals(id, queriedUser.getId());
+		} catch (Exception e) {
+			fail("Query user Failed");
+		}
+	}
+	
+	@Test
+	public void testSelectAllUsers()
+	{
+		UserDaoImpl dao = new UserDaoImpl();
+		
+		List<User> users = null;
+		
+		try {
+				users = dao.selectAllUsers();
+				assertNotNull(users);
 		} catch (Exception e) {
 			fail("Query user Failed");
 		}
