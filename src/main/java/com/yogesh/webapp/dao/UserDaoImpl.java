@@ -56,7 +56,7 @@ public class UserDaoImpl implements UserDao {
 		List<User> usersList = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			transaction = session.beginTransaction();
-			usersList = session.createQuery("from users").getResultList();
+			usersList = session.createQuery("from User").list();
 			
 			transaction.commit();
 		} catch (HibernateException e) {
@@ -73,22 +73,26 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public boolean deleteUser(long userId) throws HibernateException {
 		Transaction transaction = null;
-		User inputUser = null;
-		boolean isDeleted=false;
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			transaction = session.beginTransaction();
-			inputUser = session.get(User.class, userId);
-			if(null!=inputUser)
+		boolean  isDeleted = false;
+		
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			transaction=session.beginTransaction();
+			User user = session.get(User.class, userId);
+			if(null!=user)
 			{
-				session.delete(inputUser);
+				session.delete(user);
 				isDeleted=true;
 			}
-			
 			transaction.commit();
-		} catch (HibernateException e) {
-			if (transaction != null) {
+			
+		}catch(HibernateException e)
+		{
+			if(null!=transaction)
+			{
 				transaction.rollback();
 			}
+			
 			e.printStackTrace();
 			throw e;
 		}

@@ -1,13 +1,14 @@
 package com.yogesh.webapp.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 
 import org.junit.Test;
 
 import com.yogesh.webapp.model.User;
-import com.yogesh.webapp.dao.UserDaoImpl;
 
 public class TestUserDaoImpl {
 
